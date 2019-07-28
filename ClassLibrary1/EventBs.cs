@@ -9,8 +9,8 @@ namespace Events.BLL
 {
     public class EventBs : IEventsBs
     {
-        IEventDb dbContext;
-        public EventBs(IEventDb dbContext)
+        IEventRepository dbContext;
+        public EventBs(IEventRepository dbContext)
         {
             this.dbContext = dbContext;
         }

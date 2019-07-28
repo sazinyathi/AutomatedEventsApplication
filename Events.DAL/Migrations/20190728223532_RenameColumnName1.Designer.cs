@@ -4,14 +4,16 @@ using Events.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Events.DAL.Migrations
 {
     [DbContext(typeof(EventsDbContext))]
-    partial class EventsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190728223532_RenameColumnName1")]
+    partial class RenameColumnName1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,8 +70,6 @@ namespace Events.DAL.Migrations
                     b.Property<string>("ActiveRecipients")
                         .IsRequired();
 
-                    b.Property<int?>("EventId1");
-
                     b.Property<int>("Id");
 
                     b.Property<bool>("IsEmailSent");
@@ -78,8 +78,6 @@ namespace Events.DAL.Migrations
                         .IsRequired();
 
                     b.HasKey("EventId");
-
-                    b.HasIndex("EventId1");
 
                     b.ToTable("ReciepentsUsers");
                 });
@@ -90,13 +88,6 @@ namespace Events.DAL.Migrations
                         .WithMany("Event")
                         .HasForeignKey("EventTypeId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Events.BOL.ReciepentsUsers", b =>
-                {
-                    b.HasOne("Events.BOL.Event", "Event")
-                        .WithMany()
-                        .HasForeignKey("EventId1");
                 });
 #pragma warning restore 612, 618
         }

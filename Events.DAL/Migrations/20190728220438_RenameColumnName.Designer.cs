@@ -4,14 +4,16 @@ using Events.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Events.DAL.Migrations
 {
     [DbContext(typeof(EventsDbContext))]
-    partial class EventsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190728220438_RenameColumnName")]
+    partial class RenameColumnName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,23 +65,19 @@ namespace Events.DAL.Migrations
 
             modelBuilder.Entity("Events.BOL.ReciepentsUsers", b =>
                 {
-                    b.Property<int>("EventId");
+                    b.Property<int>("ID");
 
                     b.Property<string>("ActiveRecipients")
                         .IsRequired();
 
-                    b.Property<int?>("EventId1");
-
-                    b.Property<int>("Id");
+                    b.Property<int>("EventId");
 
                     b.Property<bool>("IsEmailSent");
 
                     b.Property<string>("NotActiveRecipients")
                         .IsRequired();
 
-                    b.HasKey("EventId");
-
-                    b.HasIndex("EventId1");
+                    b.HasKey("ID");
 
                     b.ToTable("ReciepentsUsers");
                 });
@@ -90,13 +88,6 @@ namespace Events.DAL.Migrations
                         .WithMany("Event")
                         .HasForeignKey("EventTypeId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Events.BOL.ReciepentsUsers", b =>
-                {
-                    b.HasOne("Events.BOL.Event", "Event")
-                        .WithMany()
-                        .HasForeignKey("EventId1");
                 });
 #pragma warning restore 612, 618
         }

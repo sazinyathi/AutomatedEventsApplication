@@ -7,10 +7,10 @@ using System.Text;
 
 namespace Events.DAL
 {
-    public class EventDb : IEventDb
+    public class EventRepository : IEventRepository
     {
         EventsDbContext dbContext;
-        public EventDb(EventsDbContext dbContext)
+        public EventRepository(EventsDbContext dbContext)
         {
             this.dbContext = dbContext;
         }

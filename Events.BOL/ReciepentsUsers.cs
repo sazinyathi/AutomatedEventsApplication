@@ -12,7 +12,7 @@ namespace Events.BOL
     {
         [Required]
         [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int UsersID { get; set; }
+        public int EventId { get; set; }
         [JsonProperty("ActiveRecipients")]
         [Required]
         public string ActiveRecipients { get; set; }
@@ -23,6 +23,7 @@ namespace Events.BOL
         public bool IsEmailSent { get; set; }
         [ForeignKey("Events")]
         public int Id{ get; set; }
-        
+        public Event Event { get; set; }
+
     }
 }

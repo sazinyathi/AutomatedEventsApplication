@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Events.DAL.Interfaces
 {
-    public interface IEventDb
+    public interface IEventRepository
     {
         IEnumerable<Event> GetAllEvents();
         Event GetEventByID(int id);

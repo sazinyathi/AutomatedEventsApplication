@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using Events.BOL;
 using Events.DAL;
 using Events.BLL.Interfaces;
+using Events.API.ViewModels;
+using Events.API.Common.Interface;
 
 namespace Events.API.Controllers
 {
@@ -14,10 +16,14 @@ namespace Events.API.Controllers
     public class EventsController : ControllerBase
     {
         private IEventsBs eventBs;
+        private IRecipientUsers recipientUsers;
+        private IHelper helper;
 
-        public EventsController(IEventsBs eventBs)
+        public EventsController(IEventsBs eventBs, IRecipientUsers recipientUsers, IHelper helper)
         {
             this.eventBs = eventBs;
+            this.recipientUsers = recipientUsers;
+            this.helper = helper;
         }
 
         // GET: api/Events
@@ -66,16 +72,20 @@ namespace Events.API.Controllers
 
         // POST: api/Events
         [HttpPost]
-        public async Task<IActionResult> PostEvent([FromBody] Event @event)
+        public async Task<IActionResult> PostEvent([FromBody] EventRecipientViewModel eventRecipientViewModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            var events = helper.ExtractEvent(eventRecipientViewModel);
+            var repicients = helper.ExtractReciepentsUsers(eventRecipientViewModel);
 
-          int id =  eventBs.CreateEvent(@event);
+            eventBs.CreateEvent(events);
+            
+            recipientUsers.CreateRecipientUsersRepository(repicients);
 
-          return CreatedAtAction("GetEvent", new { id = @event.Id }, @event);
+          return CreatedAtAction("GetEvent", new { id =eventRecipientViewModel.Event.Id }, events);
         }
 
         // DELETE: api/Events/5
