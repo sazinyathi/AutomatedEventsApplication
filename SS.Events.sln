@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Events.DAL", "Events.DAL\Ev
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Events.BLL", "ClassLibrary1\Events.BLL.csproj", "{7B8EE076-DEA9-4F38-93ED-E70EFDD18EDE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Events.API", "Events.API\Events.API.csproj", "{ADF8F808-CE44-4C01-852F-47DB6EA4C074}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{7B8EE076-DEA9-4F38-93ED-E70EFDD18EDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B8EE076-DEA9-4F38-93ED-E70EFDD18EDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B8EE076-DEA9-4F38-93ED-E70EFDD18EDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADF8F808-CE44-4C01-852F-47DB6EA4C074}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADF8F808-CE44-4C01-852F-47DB6EA4C074}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADF8F808-CE44-4C01-852F-47DB6EA4C074}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADF8F808-CE44-4C01-852F-47DB6EA4C074}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
