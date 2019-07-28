@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Events.BLL;
+﻿using Events.BLL;
+using Events.BLL.Interfaces;
 using Events.DAL;
 using Events.DAL.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using EventBs = Events.BLL.EventBs;
 
 namespace Events.API
 {
@@ -23,7 +20,7 @@ namespace Events.API
             services.AddSwaggerDocument();
 
             #region Business Logic Injections
-            services.AddTransient<EventBs, EventBs>();
+            services.AddTransient<IEventsBs, EventBs>();
             #endregion
 
             #region DAL Injections

@@ -6,9 +6,9 @@ namespace Events.DAL.Interfaces
 {
     public interface IEventDb
     {
-        IEnumerable<Event> GetAllCategories();
+        IEnumerable<Event> GetAllEvents();
         Event GetEventByID(int id);
-        void CreateEvent(Event Event);
+        int CreateEvent(Event Event);
         void UpdateEvent(Event Event);
         void DeleteEvent(int id);
     }

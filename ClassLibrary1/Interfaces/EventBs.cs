@@ -2,34 +2,41 @@
 using System.Collections.Generic;
 using System.Text;
 using Events.BOL;
+using Events.DAL;
+using Events.DAL.Interfaces;
 
 namespace Events.BLL.Interfaces
 {
     public class EventBs : IEventsBs
     {
-        public void CreateEvent(Event Event)
+        private IEventDb eventDb;
+        public EventBs(IEventDb eventDb)
         {
-            throw new NotImplementedException();
+            this.eventDb = eventDb;
+        }
+        public int CreateEvent(Event Event)
+        {
+            return eventDb.CreateEvent(Event);
         }
 
         public void DeleteEvent(int id)
         {
-            throw new NotImplementedException();
+            eventDb.DeleteEvent(id);
         }
 
-        public IEnumerable<Event> GetAllCategories()
+        public IEnumerable<Event> GetAllEvents()
         {
-            throw new NotImplementedException();
+            return eventDb.GetAllEvents();
         }
 
         public Event GetEventByID(int id)
         {
-            throw new NotImplementedException();
+            return eventDb.GetEventByID(id);
         }
 
         public void UpdateEvent(Event Event)
         {
-            throw new NotImplementedException();
+            eventDb.UpdateEvent(Event);
         }
     }
 }

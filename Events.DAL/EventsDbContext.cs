@@ -11,5 +11,6 @@ namespace Events.DAL
         }
         public DbSet<Event> Events { get; set; }
         public DbSet<EventCatetogory> EventCatetogories { get; set; }
+        public DbSet<ReciepentsUsers> ReciepentsUsers { get; set; }
     }
 }

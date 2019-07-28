@@ -14,29 +14,29 @@ namespace Events.BLL
         {
             this.dbContext = dbContext;
         }
-        public void CreateEvent(Event Event)
+        public int CreateEvent(Event Event)
         {
-            dbContext.CreateEvent(Event);
+           return dbContext.CreateEvent(Event);
         }
 
         public void DeleteEvent(int id)
         {
-            throw new NotImplementedException();
+            dbContext.DeleteEvent(id);
         }
 
-        public IEnumerable<Event> GetAllCategories()
+        public IEnumerable<Event> GetAllEvents()
         {
-            throw new NotImplementedException();
+           return dbContext.GetAllEvents();
         }
 
         public Event GetEventByID(int id)
         {
-            throw new NotImplementedException();
+            return dbContext.GetEventByID(id);
         }
 
         public void UpdateEvent(Event Event)
         {
-            throw new NotImplementedException();
+            dbContext.UpdateEvent(Event);
         }
     }
 }

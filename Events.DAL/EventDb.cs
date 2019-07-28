@@ -2,6 +2,7 @@
 using Events.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Events.DAL
@@ -13,30 +14,33 @@ namespace Events.DAL
         {
             this.dbContext = dbContext;
         }
-        public void CreateEvent(Event Event)
+        public int CreateEvent(Event Event)
         {
             dbContext.Add(Event);
             dbContext.SaveChanges();
+            return Event.Id;
         }
 
         public void DeleteEvent(int id)
         {
-            throw new NotImplementedException();
+           var events = dbContext.Events.FindAsync(id);
+            dbContext.Remove(events);
         }
 
-        public IEnumerable<Event> GetAllCategories()
+        public IEnumerable<Event> GetAllEvents()
         {
-            throw new NotImplementedException();
+            return dbContext.Events.ToList();
         }
 
         public Event GetEventByID(int id)
         {
-            throw new NotImplementedException();
+            return dbContext.Events.Where(x => x.Id == id).FirstOrDefault();
         }
 
         public void UpdateEvent(Event Event)
         {
-            throw new NotImplementedException();
+            dbContext.Update(Event);
+            dbContext.SaveChanges();
         }
     }
 }
