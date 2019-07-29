@@ -11,5 +11,6 @@ namespace Events.DAL.Interfaces
         Task<int> CreateEventAsync(Event Event);
         void UpdateEvent(Event Event);
         void DeleteEvent(int id);
+        void JJ();
     }
 }

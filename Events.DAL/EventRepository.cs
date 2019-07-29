@@ -39,7 +39,11 @@ namespace Events.DAL
             return dbContext.Events.Where(x => x.Id == id).FirstOrDefault();
         }
 
-    
+        public void JJ()
+        {
+            throw new NotImplementedException();
+        }
+
         public void UpdateEvent(Event Event)
         {
             dbContext.Update(Event);
