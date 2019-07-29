@@ -7,7 +7,7 @@ using Events.DAL.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using EventBs = Events.BLL.EventBs;
+using EventsServices = Events.BLL.EventsServices;
 
 namespace Events.API
 {
@@ -22,7 +22,7 @@ namespace Events.API
             services.AddSwaggerDocument();
 
             #region Business Logic Injections
-            services.AddTransient<IEventsBs, EventBs>();
+            services.AddTransient<IEventsServices, EventsServices>();
             services.AddTransient<IRecipientUsers, RecipientUsersBs>();
             services.AddTransient<IHelper, Helper>();
             #endregion

@@ -16,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\Events.BLL.csproj" />
-    <ProjectReference Include="..\Events.DAL\Events.DAL.csproj" />
+    <ProjectReference Include="..\ClassLibrary1\Events.Services.csproj" />
+    <ProjectReference Include="..\Events.DAL\Events.Repositories.csproj" />
   </ItemGroup>
 
 </Project>

@@ -4,19 +4,21 @@ using Events.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Events.BLL
 {
-    public class EventBs : IEventsBs
+    public class EventsServices : IEventsServices
     {
         IEventRepository dbContext;
-        public EventBs(IEventRepository dbContext)
+        public EventsServices(IEventRepository dbContext)
         {
             this.dbContext = dbContext;
         }
-        public int CreateEvent(Event Event)
+
+        public async Task<int> CreateEventAsync(Event Event)
         {
-           return dbContext.CreateEvent(Event);
+           return await dbContext.CreateEventAsync(Event);
         }
 
         public void DeleteEvent(int id)
@@ -24,14 +26,14 @@ namespace Events.BLL
             dbContext.DeleteEvent(id);
         }
 
-        public IEnumerable<Event> GetAllEvents()
+        public async Task<IEnumerable<Event>> GetAllEventsAsync()
         {
-           return dbContext.GetAllEvents();
+           return await dbContext.GetAllEventsAsync();
         }
 
-        public Event GetEventByID(int id)
+        public async Task<Event> GetEventByIDAsync(int id)
         {
-            return dbContext.GetEventByID(id);
+            return await dbContext.GetEventByIDAsync(id);
         }
 
         public void UpdateEvent(Event Event)

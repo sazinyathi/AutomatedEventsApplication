@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Events.BOL\Events.BOL.csproj" />
+    <ProjectReference Include="..\Events.BOL\Events.Models.csproj" />
   </ItemGroup>
 
 </Project>

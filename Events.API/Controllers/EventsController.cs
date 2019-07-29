@@ -15,22 +15,22 @@ namespace Events.API.Controllers
     [ApiController]
     public class EventsController : ControllerBase
     {
-        private IEventsBs eventBs;
+        private IEventsServices eventService;
         private IRecipientUsers recipientUsers;
         private IHelper helper;
 
-        public EventsController(IEventsBs eventBs, IRecipientUsers recipientUsers, IHelper helper)
+        public EventsController(IEventsServices eventService, IRecipientUsers recipientUsers, IHelper helper)
         {
-            this.eventBs = eventBs;
+            this.eventService = eventService;
             this.recipientUsers = recipientUsers;
             this.helper = helper;
         }
 
         // GET: api/Events
         [HttpGet]
-        public IEnumerable<Event> GetEvents()
+        public async Task<IEnumerable<Event>> GetEventsAsync()
         {
-            return eventBs.GetAllEvents();
+            return await eventService.GetAllEventsAsync();
         }
 
         // GET: api/Events/5
@@ -42,7 +42,7 @@ namespace Events.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            var @event = eventBs.GetEventByID(id);
+            var @event =await eventService.GetEventByIDAsync(id);
 
             if (@event == null)
             {
@@ -65,7 +65,7 @@ namespace Events.API.Controllers
             {
                 return BadRequest();
             }
-            eventBs.UpdateEvent(@event);
+            eventService.UpdateEvent(@event);
     
             return NoContent();
         }
@@ -81,7 +81,7 @@ namespace Events.API.Controllers
             var events = helper.ExtractEvent(eventRecipientViewModel);
             var repicients = helper.ExtractReciepentsUsers(eventRecipientViewModel);
 
-            eventBs.CreateEvent(events);
+          await  eventService.CreateEventAsync(events);
             
             recipientUsers.CreateRecipientUsersRepository(repicients);
 
@@ -97,13 +97,13 @@ namespace Events.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            var @event = eventBs.GetEventByID(id);
+            var @event = await eventService.GetEventByIDAsync(id);
             if (@event == null)
             {
                 return NotFound();
             }
 
-            eventBs.DeleteEvent(id);
+            eventService.DeleteEvent(id);
 
             return Ok(@event);
         }

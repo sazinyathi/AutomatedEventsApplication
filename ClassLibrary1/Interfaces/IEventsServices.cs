@@ -1,11 +1,14 @@
 ﻿using Events.BOL;
+using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace Events.DAL.Interfaces
+namespace Events.BLL.Interfaces
 {
-    public interface IEventRepository
+    public interface IEventsServices
     {
+
         Task<IEnumerable<Event>> GetAllEventsAsync();
         Task<Event> GetEventByIDAsync(int id);
         Task<int> CreateEventAsync(Event Event);

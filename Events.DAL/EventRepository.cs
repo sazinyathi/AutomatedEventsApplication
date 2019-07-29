@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Events.DAL
 {
@@ -13,8 +14,9 @@ namespace Events.DAL
         public EventRepository(EventsDbContext dbContext)
         {
             this.dbContext = dbContext;
+
         }
-        public int CreateEvent(Event Event)
+        public async Task<int> CreateEventAsync(Event Event)
         {
             dbContext.Add(Event);
             dbContext.SaveChanges();
@@ -27,16 +29,17 @@ namespace Events.DAL
             dbContext.Remove(events);
         }
 
-        public IEnumerable<Event> GetAllEvents()
+        public async Task<IEnumerable<Event>> GetAllEventsAsync()
         {
             return dbContext.Events.ToList();
         }
 
-        public Event GetEventByID(int id)
+        public async Task<Event> GetEventByIDAsync(int id)
         {
             return dbContext.Events.Where(x => x.Id == id).FirstOrDefault();
         }
 
+    
         public void UpdateEvent(Event Event)
         {
             dbContext.Update(Event);
