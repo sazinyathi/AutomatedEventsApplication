@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Events.BOL
+namespace Events.Models
 {
     [Table("Events")]
     public class Event
@@ -20,7 +22,11 @@ namespace Events.BOL
         [MaxLength(50)]
         public string EventLocation { get; set; }
         [Required]
-        public DateTime EventDate { get; set; }
+        [JsonProperty("ActiveRecipients")]
+        public List<Reciepents> ActiveRecipients { get; set; }
+        
+        [Required]
+        public DateTime RowCreateDate { get; set; }
         [ForeignKey("EventCatetogory")]
         public int EventTypeId { get; set; }
         public EventCatetogory EventCatetogory { get; set; }

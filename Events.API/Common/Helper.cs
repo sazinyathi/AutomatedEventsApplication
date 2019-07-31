@@ -1,10 +1,6 @@
 ﻿using Events.API.Common.Interface;
 using Events.API.ViewModels;
-using Events.BOL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Events.Models;
 
 namespace Events.API.Common
 {
@@ -17,7 +13,7 @@ namespace Events.API.Common
                 Id = eventRecipientViewModel.Event.Id,
                 EventName = eventRecipientViewModel.Event.EventName,
                 EventDescription = eventRecipientViewModel.Event.EventDescription,
-                EventDate = eventRecipientViewModel.Event.EventDate,
+                RowCreateDate = eventRecipientViewModel.Event.RowCreateDate,
                 EventLocation = eventRecipientViewModel.Event.EventLocation,
                 EventTypeId = eventRecipientViewModel.Event.EventTypeId
             };

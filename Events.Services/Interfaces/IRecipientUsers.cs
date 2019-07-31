@@ -1,11 +1,8 @@
-﻿using Events.BOL;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Events.Models;
 
-namespace Events.BLL.Interfaces
+namespace Events.Services.Interfaces
 {
-   public interface IRecipientUsers
+    public interface IRecipientUsers
     {
         void CreateRecipientUsersRepository(ReciepentsUsers reciepentsUsers);
     

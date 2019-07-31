@@ -1,12 +1,12 @@
-﻿using Events.BOL;
-using Events.DAL.Interfaces;
+﻿using Events.DAL.Interfaces;
+using Events.Models;
+using Events.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Events.DAL
+namespace Events.Repositories
 {
     public class EventRepository : IEventRepository
     {
@@ -23,31 +23,32 @@ namespace Events.DAL
             return Event.Id;
         }
 
-        public void DeleteEvent(int id)
-        {
-           var events = dbContext.Events.FindAsync(id);
-            dbContext.Remove(events);
-        }
-
-        public async Task<IEnumerable<Event>> GetAllEventsAsync()
-        {
-            return dbContext.Events.ToList();
-        }
-
         public async Task<Event> GetEventByIDAsync(int id)
         {
             return dbContext.Events.Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public void JJ()
-        {
-            throw new NotImplementedException();
-        }
 
-        public void UpdateEvent(Event Event)
+        //public async Task<IEnumerable<Event>> GetAllEventsAsync()
+        //{ 
+        //    return  dbContext.Events.ToList();
+        //}
+
+        public async Task UpdateEventAsync(Event Event)
         {
             dbContext.Update(Event);
             dbContext.SaveChanges();
+        }
+
+        public async Task DeleteEventAsync(int id)
+        {
+            var events = await dbContext.Events.FindAsync(id);
+            dbContext.Remove(events);
+        }
+
+        public Task<IEnumerable<Event>> GetAllEventsAsync()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20190728191112_AddReciepentsUsersTable.cs" />
+    <Compile Remove="Migrations\20190731221014_InitialCreate.cs" />
+    <Compile Remove="Migrations\20190731221014_InitialCreate.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,6 +20,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Events.Models\Events.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

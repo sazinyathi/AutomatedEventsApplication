@@ -1,11 +1,8 @@
-﻿using Events.BOL;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Events.Models;
 
 namespace Events.DAL.Interfaces
 {
-   public interface IRecipientUsersRepository
+    public interface IRecipientUsersRepository
     {
         void CreateRecipientUsersRepository(ReciepentsUsers reciepentsUsers);
     }

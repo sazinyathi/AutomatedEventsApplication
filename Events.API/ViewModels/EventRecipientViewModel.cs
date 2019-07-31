@@ -1,8 +1,4 @@
-﻿using Events.BOL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Events.Models;
 
 namespace Events.API.ViewModels
 {

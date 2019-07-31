@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace Events.BOL
+namespace Events.Models
 {
     [Table("ReciepentsUsers")]
     public class ReciepentsUsers
@@ -15,7 +15,7 @@ namespace Events.BOL
         public int EventId { get; set; }
         [JsonProperty("ActiveRecipients")]
         [Required]
-        public string ActiveRecipients { get; set; }
+        public List<Reciepents> ActiveRecipients { get; set; }
         [Required]
         [JsonProperty("NotActiveRecipients")]
         public string NotActiveRecipients { get; set; }

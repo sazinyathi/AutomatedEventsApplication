@@ -1,10 +1,8 @@
-﻿using Events.BOL;
-using System;
+﻿using Events.Models;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Events.BLL.Interfaces
+namespace Events.Services.Interfaces
 {
     public interface IEventsServices
     {

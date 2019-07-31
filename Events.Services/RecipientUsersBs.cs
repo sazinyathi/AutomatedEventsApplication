@@ -1,11 +1,8 @@
-﻿using Events.BLL.Interfaces;
-using Events.BOL;
-using Events.DAL.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Events.DAL.Interfaces;
+using Events.Models;
+using Events.Services.Interfaces;
 
-namespace Events.BLL
+namespace Events.Services
 {
     public class RecipientUsersBs : IRecipientUsers
     {

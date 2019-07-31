@@ -1,10 +1,7 @@
-﻿using Events.BOL;
-using Events.DAL.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Events.DAL.Interfaces;
+using Events.Models;
 
-namespace Events.DAL
+namespace Events.Repositories
 {
     public class RecipientUsersRepository : IRecipientUsersRepository
     {

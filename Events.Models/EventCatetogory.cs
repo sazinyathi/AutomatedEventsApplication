@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace Events.BOL
+namespace Events.Models
 {
     [Table("EventCatetogory")]
     public class EventCatetogory

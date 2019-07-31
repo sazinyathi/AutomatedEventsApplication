@@ -1,12 +1,10 @@
-﻿using Events.BLL.Interfaces;
-using Events.BOL;
-using Events.DAL.Interfaces;
-using System;
+﻿using Events.DAL.Interfaces;
+using Events.Models;
+using Events.Services.Interfaces;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Events.BLL
+namespace Events.Services
 {
     public class EventsServices : IEventsServices
     {
@@ -23,7 +21,7 @@ namespace Events.BLL
 
         public void DeleteEvent(int id)
         {
-            dbContext.DeleteEvent(id);
+            dbContext.DeleteEventAsync(id);
         }
 
         public async Task<IEnumerable<Event>> GetAllEventsAsync()
@@ -38,7 +36,7 @@ namespace Events.BLL
 
         public void UpdateEvent(Event Event)
         {
-            dbContext.UpdateEvent(Event);
+            dbContext.UpdateEventAsync(Event);
         }
     }
 }

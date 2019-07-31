@@ -1,13 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Events.BOL;
-using Events.DAL;
-using Events.BLL.Interfaces;
-using Events.API.ViewModels;
 using Events.API.Common.Interface;
+using Events.Models;
+using Events.Services.Interfaces;
+using Events.API.ViewModels;
 
 namespace Events.API.Controllers
 {
@@ -72,20 +69,15 @@ namespace Events.API.Controllers
 
         // POST: api/Events
         [HttpPost]
-        public async Task<IActionResult> PostEvent([FromBody] EventRecipientViewModel eventRecipientViewModel)
+        public async Task<IActionResult> PostEvent([FromBody] Event events)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            var events = helper.ExtractEvent(eventRecipientViewModel);
-            var repicients = helper.ExtractReciepentsUsers(eventRecipientViewModel);
 
-          await  eventService.CreateEventAsync(events);
-            
-            recipientUsers.CreateRecipientUsersRepository(repicients);
-
-          return CreatedAtAction("GetEvent", new { id =eventRecipientViewModel.Event.Id }, events);
+          var _id =await eventService.CreateEventAsync(events);
+          return CreatedAtAction("GetEvent", new { id = _id }, events);
         }
 
         // DELETE: api/Events/5

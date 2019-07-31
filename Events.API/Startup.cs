@@ -1,13 +1,12 @@
 ﻿using Events.API.Common;
 using Events.API.Common.Interface;
-using Events.BLL;
-using Events.BLL.Interfaces;
-using Events.DAL;
 using Events.DAL.Interfaces;
+using Events.Repositories;
+using Events.Services;
+using Events.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using EventsServices = Events.BLL.EventsServices;
 
 namespace Events.API
 {
