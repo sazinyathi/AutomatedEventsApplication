@@ -1,6 +1,7 @@
 ﻿using Events.DAL.Interfaces;
 using Events.Models;
 using Events.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,45 +11,55 @@ namespace Events.Repositories
 {
     public class EventRepository : IEventRepository
     {
-        EventsDbContext dbContext;
+        private readonly EventsDbContext dbContext;
         public EventRepository(EventsDbContext dbContext)
         {
             this.dbContext = dbContext;
 
         }
-        public async Task<int> CreateEventAsync(Event Event)
+        public async Task<int> CreateEventAsync(Event newEvent)
         {
-            dbContext.Add(Event);
-            dbContext.SaveChanges();
-            return Event.Id;
+            dbContext.Add(newEvent);
+            await dbContext.SaveChangesAsync();
+            return newEvent.Id;
         }
 
         public async Task<Event> GetEventByIDAsync(int id)
         {
-            return dbContext.Events.Where(x => x.Id == id).FirstOrDefault();
+            return await dbContext.Events.AsNoTracking().Where(x => x.Id == id).FirstOrDefaultAsync();
         }
 
-
-        //public async Task<IEnumerable<Event>> GetAllEventsAsync()
-        //{ 
-        //    return  dbContext.Events.ToList();
-        //}
-
-        public async Task UpdateEventAsync(Event Event)
+        public async Task UpdateEventAsync(Event updatedEvent)
         {
-            dbContext.Update(Event);
-            dbContext.SaveChanges();
+            var eventEntity = await dbContext.Events.FirstOrDefaultAsync(a => a.Id == updatedEvent.Id);
+            if (eventEntity == null || eventEntity == default)
+            {
+                throw new KeyNotFoundException($"Id of '{updatedEvent.Id}' was not found!");
+            }
+            eventEntity.EventName = updatedEvent.EventName;
+            eventEntity.EventLocation = updatedEvent.EventLocation;
+            eventEntity.EventDescription = updatedEvent.EventDescription;
+            eventEntity.EventCatetogory = updatedEvent.EventCatetogory;
+            eventEntity.ActiveRecipients = updatedEvent.ActiveRecipients;
+            eventEntity.EventTypeId = updatedEvent.EventTypeId;
+            dbContext.Update(eventEntity);
+            await dbContext.SaveChangesAsync();
         }
 
         public async Task DeleteEventAsync(int id)
         {
-            var events = await dbContext.Events.FindAsync(id);
-            dbContext.Remove(events);
+            var eventEntity = await dbContext.Events.FirstOrDefaultAsync(a => a.Id == id);
+            if(eventEntity == null || eventEntity == default)
+            {
+                throw new KeyNotFoundException( $"Id of '{id}' was not found!");
+            }
+            dbContext.Remove(eventEntity);
+            await dbContext.SaveChangesAsync();
         }
 
-        public Task<IEnumerable<Event>> GetAllEventsAsync()
+        public async Task<IEnumerable<Event>> GetAllEventsAsync()
         {
-            throw new NotImplementedException();
+            return await dbContext.Events.AsNoTracking().ToListAsync();
         }
     }
 }

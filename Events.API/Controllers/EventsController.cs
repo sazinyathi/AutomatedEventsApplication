@@ -12,22 +12,17 @@ namespace Events.API.Controllers
     [ApiController]
     public class EventsController : ControllerBase
     {
-        private IEventsServices eventService;
-        private IRecipientUsers recipientUsers;
-        private IHelper helper;
-
-        public EventsController(IEventsServices eventService, IRecipientUsers recipientUsers, IHelper helper)
+        private readonly IEventsServices _eventService;
+        public EventsController(IEventsServices eventService)
         {
-            this.eventService = eventService;
-            this.recipientUsers = recipientUsers;
-            this.helper = helper;
+            _eventService = eventService;
         }
 
         // GET: api/Events
         [HttpGet]
-        public async Task<IEnumerable<Event>> GetEventsAsync()
+        public async Task<IActionResult> GetEventsAsync()
         {
-            return await eventService.GetAllEventsAsync();
+            return Ok( await _eventService.GetAllEventsAsync());
         }
 
         // GET: api/Events/5
@@ -39,7 +34,7 @@ namespace Events.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            var @event =await eventService.GetEventByIDAsync(id);
+            var @event =await _eventService.GetEventByIDAsync(id);
 
             if (@event == null)
             {
@@ -51,20 +46,16 @@ namespace Events.API.Controllers
 
         // PUT: api/Events/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEvent([FromRoute] int id, [FromBody] Event @event)
+        public async Task<IActionResult> PutEvent([FromRoute] int id, [FromBody] Event updatedEvent)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            if (id != @event.Id)
-            {
-                return BadRequest();
-            }
-            eventService.UpdateEvent(@event);
+            updatedEvent.Id = id;
+            await _eventService.UpdateEventAsync(updatedEvent);
     
-            return NoContent();
+            return Ok();
         }
 
         // POST: api/Events
@@ -76,7 +67,7 @@ namespace Events.API.Controllers
                 return BadRequest(ModelState);
             }
 
-          var _id =await eventService.CreateEventAsync(events);
+          var _id =await _eventService.CreateEventAsync(events);
           return CreatedAtAction("GetEvent", new { id = _id }, events);
         }
 
@@ -89,15 +80,15 @@ namespace Events.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            var @event = await eventService.GetEventByIDAsync(id);
-            if (@event == null)
+            var eventToDelete = await _eventService.GetEventByIDAsync(id);
+            if (eventToDelete == null)
             {
                 return NotFound();
             }
 
-            eventService.DeleteEvent(id);
+            await _eventService.DeleteEventAsync(id);
 
-            return Ok(@event);
+            return Ok(eventToDelete);
         }
 
         

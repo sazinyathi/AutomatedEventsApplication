@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Events.Models.DTOs;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -23,7 +24,7 @@ namespace Events.Models
         public string EventLocation { get; set; }
         [Required]
         [JsonProperty("ActiveRecipients")]
-        public List<Reciepents> ActiveRecipients { get; set; }
+        public List<Reciepent> ActiveRecipients { get; set; }
         
         [Required]
         public DateTime RowCreateDate { get; set; }
