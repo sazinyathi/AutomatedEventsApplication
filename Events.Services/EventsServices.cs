@@ -8,35 +8,35 @@ namespace Events.Services
 {
     public class EventsServices : IEventsServices
     {
-        IEventRepository dbContext;
-        public EventsServices(IEventRepository dbContext)
+        private readonly IEventRepository _eventRepository;
+        public EventsServices(IEventRepository eventRepository)
         {
-            this.dbContext = dbContext;
+            _eventRepository = eventRepository;
         }
 
-        public async Task<int> CreateEventAsync(Event Event)
+        public async Task<int> CreateEventAsync(Event newEvent)
         {
-           return await dbContext.CreateEventAsync(Event);
+           return await _eventRepository.CreateEventAsync(newEvent);
         }
 
-        public void DeleteEvent(int id)
+        public async Task DeleteEventAsync(int id)
         {
-            dbContext.DeleteEventAsync(id);
+            await _eventRepository.DeleteEventAsync(id);
         }
 
         public async Task<IEnumerable<Event>> GetAllEventsAsync()
         {
-           return await dbContext.GetAllEventsAsync();
+           return await _eventRepository.GetAllEventsAsync();
         }
 
         public async Task<Event> GetEventByIDAsync(int id)
         {
-            return await dbContext.GetEventByIDAsync(id);
+            return await _eventRepository.GetEventByIDAsync(id);
         }
 
-        public void UpdateEvent(Event Event)
+        public async Task UpdateEventAsync(Event updatedEvent)
         {
-            dbContext.UpdateEventAsync(Event);
+           await _eventRepository.UpdateEventAsync(updatedEvent);
         }
     }
 }
