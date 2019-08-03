@@ -22,12 +22,55 @@ namespace Events.Models
         [Required]
         [MaxLength(50)]
         public string EventLocation { get; set; }
+        [JsonIgnore]
+        public string ActiveRecipientsJson { get; set; }
         [Required]
-        [JsonProperty("ActiveRecipients")]
-        public List<Reciepent> ActiveRecipients { get; set; }
-        
+        [NotMapped]
+        [JsonProperty("NotActiveRecipients")]
+        public List<string> ActiveRecipients {
+            get {
+                if (ActiveRecipientsJson != null)
+                { return JsonConvert.DeserializeObject<List<string>>(ActiveRecipientsJson); }
+                return new List<string>();
+            }
+            set {
+              if(value != null)
+                {
+                    ActiveRecipientsJson = JsonConvert.SerializeObject(value);
+                }
+
+            }
+
+        }
+
+        [JsonIgnore]
+        public string NotActiveRecipientsJson { get; set; }
+        [Required]
+        [NotMapped]
+        [JsonProperty("NotActiveRecipients")]
+        public List<string> NotActiveRecipients
+        {
+            get
+            {
+                if (NotActiveRecipientsJson != null)
+                { return JsonConvert.DeserializeObject<List<string>>(NotActiveRecipientsJson); }
+                return new List<string>();
+            }
+            set
+            {
+                if (value != null)
+                {
+                    NotActiveRecipientsJson = JsonConvert.SerializeObject(value);
+                }
+
+            }
+
+        }
+
         [Required]
         public DateTime RowCreateDate { get; set; }
+        [Required]
+        public bool IsMailSent { get; set; }
         [ForeignKey("EventCatetogory")]
         public int EventTypeId { get; set; }
         public EventCatetogory EventCatetogory { get; set; }
