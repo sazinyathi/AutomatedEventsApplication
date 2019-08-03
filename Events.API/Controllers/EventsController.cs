@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Events.API.Common.Interface;
 using Events.Models;
 using Events.Services.Interfaces;
-using Events.API.ViewModels;
 
 namespace Events.API.Controllers
 {

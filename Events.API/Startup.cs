@@ -1,6 +1,4 @@
-﻿using Events.API.Common;
-using Events.API.Common.Interface;
-using Events.DAL.Interfaces;
+﻿using Events.DAL.Interfaces;
 using Events.Repositories;
 using Events.Services;
 using Events.Services.Interfaces;
@@ -22,13 +20,11 @@ namespace Events.API
 
             #region Business Logic Injections
             services.AddTransient<IEventsServices, EventsServices>();
-            services.AddTransient<IRecipientUsers, RecipientUsersBs>();
-            services.AddTransient<IHelper, Helper>();
-            #endregion
+        #endregion
 
             #region DAL Injections
             services.AddTransient<IEventRepository, EventRepository>();
-            services.AddTransient<IRecipientUsersRepository, RecipientUsersRepository>();
+           
             #endregion
         }
 
