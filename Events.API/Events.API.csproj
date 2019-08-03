@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Events.Intefarces\Events.Intefarces.csproj" />
     <ProjectReference Include="..\Events.Models\Events.Models.csproj" />
     <ProjectReference Include="..\Events.Repositories\Events.Repositories.csproj" />
     <ProjectReference Include="..\Events.Services\Events.Services.csproj" />

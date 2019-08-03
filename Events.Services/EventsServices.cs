@@ -1,6 +1,6 @@
-﻿using Events.DAL.Interfaces;
+﻿using Events.Interfaces.Repositories;
+using Events.Interfaces.Services;
 using Events.Models;
-using Events.Services.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

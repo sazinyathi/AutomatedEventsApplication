@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Events.Models;
-using Events.Services.Interfaces;
+using Events.Interfaces.Services;
 
 namespace Events.API.Controllers
 {

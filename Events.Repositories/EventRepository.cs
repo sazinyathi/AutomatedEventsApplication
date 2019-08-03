@@ -1,8 +1,6 @@
-﻿using Events.DAL.Interfaces;
+﻿using Events.Interfaces.Repositories;
 using Events.Models;
-using Events.Repositories;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

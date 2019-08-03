@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Events.Models", "Events.Mod
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Events.Repositories", "Events.Repositories\Events.Repositories.csproj", "{625084A5-4CBE-4240-A814-F6470EB82951}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Events.Intefarces", "Events.Intefarces\Events.Intefarces.csproj", "{DC4B99E1-DC5D-438A-A0D5-953E54A980DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{625084A5-4CBE-4240-A814-F6470EB82951}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{625084A5-4CBE-4240-A814-F6470EB82951}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{625084A5-4CBE-4240-A814-F6470EB82951}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC4B99E1-DC5D-438A-A0D5-953E54A980DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC4B99E1-DC5D-438A-A0D5-953E54A980DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC4B99E1-DC5D-438A-A0D5-953E54A980DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC4B99E1-DC5D-438A-A0D5-953E54A980DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

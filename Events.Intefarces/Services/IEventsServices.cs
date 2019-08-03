@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Events.Services.Interfaces
+namespace Events.Interfaces.Services
 {
     public interface IEventsServices
     {

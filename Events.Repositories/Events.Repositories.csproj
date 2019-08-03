@@ -19,11 +19,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Events.Models\Events.Models.csproj" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
+    <ProjectReference Include="..\Events.Intefarces\Events.Intefarces.csproj" />
+    <ProjectReference Include="..\Events.Models\Events.Models.csproj" />
   </ItemGroup>
 
 </Project>
