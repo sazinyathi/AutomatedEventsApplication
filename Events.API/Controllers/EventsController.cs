@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Events.Models;
 using Events.Interfaces.Services;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Events.API.Controllers
 {
@@ -31,7 +33,7 @@ namespace Events.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            var @event =await _eventService.GetEventByIDAsync(id);
+            var @event = await _eventService.GetEventByIDAsync(id);
 
             if (@event == null)
             {
@@ -51,7 +53,7 @@ namespace Events.API.Controllers
             }
             updatedEvent.Id = id;
             await _eventService.UpdateEventAsync(updatedEvent);
-    
+
             return Ok();
         }
 
@@ -64,8 +66,8 @@ namespace Events.API.Controllers
                 return BadRequest(ModelState);
             }
 
-          var _id =await _eventService.CreateEventAsync(events);
-          return CreatedAtAction("GetEvent", new { id = _id }, events);
+            var _id = await _eventService.CreateEventAsync(events);
+            return CreatedAtAction("GetEvent", new { id = _id }, events);
         }
 
         // DELETE: api/Events/5
@@ -88,6 +90,6 @@ namespace Events.API.Controllers
             return Ok(eventToDelete);
         }
 
-        
+
     }
 }
