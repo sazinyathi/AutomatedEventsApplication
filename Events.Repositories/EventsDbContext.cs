@@ -7,8 +7,9 @@ namespace Events.Repositories
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-J0ROJ34\MSSQLSERVER2017;Database=Events;Trusted_Connection=True;Password=Password0;User=sa");
+            optionsBuilder.UseSqlServer(@"Server=LNGDURL0000329\SQLSERVER2012;Database=Events;Trusted_Connection=True;Password=Password0;User=sa");
         }
+
         public DbSet<Event> Events { get; set; }
         public DbSet<EventCatetogory> EventCatetogories { get; set; }
     }

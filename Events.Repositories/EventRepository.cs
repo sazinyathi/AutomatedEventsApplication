@@ -17,9 +17,17 @@ namespace Events.Repositories
         }
         public async Task<int> CreateEventAsync(Event newEvent)
         {
-            dbContext.Add(newEvent);
-            await dbContext.SaveChangesAsync();
-            return newEvent.Id;
+            try
+            {
+                dbContext.Add(newEvent);
+                await dbContext.SaveChangesAsync();
+                return newEvent.Id;
+            }
+            catch (System.Exception exc)
+            {
+
+                throw;
+            }
         }
 
         public async Task<Event> GetEventByIDAsync(int id)

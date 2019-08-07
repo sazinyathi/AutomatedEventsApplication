@@ -10,11 +10,6 @@ namespace Events.Models
     [Table("Events")]
     public class Event
     {
-        public Event()
-        {
-            ActiveRecipients = new List<string> {"nolwazi@gmail.com","Sbusiso@yahoo.com","Vezi@Hotmail.com" };
-            NotActiveRecipients = new List<string> { "sazi.nyathi@lexisnexis.co.za", "pravin@sa.com", "senzo@thebugs.com" };
-        }
         [Required]
         [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
@@ -28,57 +23,58 @@ namespace Events.Models
         [MaxLength(50)]
         public string EventLocation { get; set; }
         [JsonIgnore]
-        public string ActiveRecipientsJson { get; set; }
-
-        [NotMapped]
-        [JsonProperty("activeRecipients")]
-        public List<string> ActiveRecipients
+        [Required]
+        public string ActiveRecipientsJson
         {
             get
             {
-                if (!string.IsNullOrEmpty(ActiveRecipientsJson))
+                if (ActiveRecipients != null)
                 {
-                    return JsonConvert.DeserializeObject<List<string>>(ActiveRecipientsJson);
+
+                    return JsonConvert.SerializeObject(ActiveRecipients);
                 }
-                return new List<string>();
+                return JsonConvert.SerializeObject(new List<string>());
             }
             set
             {
                 if (value != null)
                 {
-                    ActiveRecipientsJson = JsonConvert.SerializeObject(value);
+                    ActiveRecipients = JsonConvert.DeserializeObject<List<string>>(value);
+                }
+
+            }
+        }
+
+        [NotMapped]
+        //[JsonProperty("activeRecipients")]
+        public List<string> ActiveRecipients { get; set; }
+
+        [JsonIgnore]
+        [Required]
+        public string NotActiveRecipientsJson {
+            get
+            {
+                if (NotActiveRecipients != null)
+                {
+                    return JsonConvert.SerializeObject(NotActiveRecipients);
+                }
+                return JsonConvert.SerializeObject(new List<string>());
+
+            }
+            set
+            {
+                if (value != null)
+                {
+                    NotActiveRecipients = JsonConvert.DeserializeObject<List<string>>(value);
                 }
 
             }
 
         }
-
-        [JsonIgnore]
-        public string NotActiveRecipientsJson { get; set; }
 
         [NotMapped]
         [JsonProperty("notActiveRecipients")]
-        public List<string> NotActiveRecipients
-        {
-            get
-            {
-                if (!string.IsNullOrEmpty(NotActiveRecipientsJson))
-                {
-                    return JsonConvert.DeserializeObject<List<string>>(NotActiveRecipientsJson);
-                }
-                return new List<string>();
-
-            }
-            set
-            {
-                if (value != null)
-                {
-                    NotActiveRecipientsJson = JsonConvert.SerializeObject(value);
-                }
-
-            }
-
-        }
+        public List<string> NotActiveRecipients{ get; set; }
 
         [Required]
         public DateTime RowCreateDate { get; set; }

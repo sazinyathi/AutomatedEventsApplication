@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Events.Repositories.Migrations
 {
     [DbContext(typeof(EventsDbContext))]
-    [Migration("20190804012748_AAAA")]
-    partial class AAAA
+    [Migration("20190807065412_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
