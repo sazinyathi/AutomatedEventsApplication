@@ -3,12 +3,15 @@ using Events.Models;
 
 namespace Events.Repositories
 {
-    public class EventsDbContext:DbContext
+    public class EventsDbContext : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
+        public EventsDbContext(DbContextOptions<EventsDbContext> options)
+                    : base(options)
         {
-            optionsBuilder.UseSqlServer(@"Server=LNGDURL0000329\SQLSERVER2012;Database=Events;Trusted_Connection=True;Password=Password0;User=sa");
+            Database.Migrate();
         }
+
 
         public DbSet<Event> Events { get; set; }
         public DbSet<EventCatetogory> EventCatetogories { get; set; }

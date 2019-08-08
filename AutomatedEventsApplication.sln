@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29123.88
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Events.Services", "Events.Services\Events.Services.csproj", "{7B8EE076-DEA9-4F38-93ED-E70EFDD18EDE}"
 EndProject
@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Events.Models", "Events.Mod
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Events.Repositories", "Events.Repositories\Events.Repositories.csproj", "{625084A5-4CBE-4240-A814-F6470EB82951}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Events.Intefarces", "Events.Intefarces\Events.Intefarces.csproj", "{DC4B99E1-DC5D-438A-A0D5-953E54A980DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Events.Intefarces", "Events.Intefarces\Events.Intefarces.csproj", "{DC4B99E1-DC5D-438A-A0D5-953E54A980DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
