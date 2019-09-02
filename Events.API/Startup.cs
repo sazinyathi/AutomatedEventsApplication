@@ -1,5 +1,7 @@
-﻿using Events.Interfaces.Repositories;
+﻿using Events.Intefarces.Services;
+using Events.Interfaces.Repositories;
 using Events.Interfaces.Services;
+using Events.Notifications;
 using Events.Repositories;
 using Events.Services;
 using Microsoft.AspNetCore.Builder;
@@ -34,7 +36,8 @@ namespace Events.API
 
             #region DAL Injections
             services.AddTransient<IEventRepository, EventRepository>();
-           
+            services.AddTransient<INotificationService, EmailNotificationService>();
+
             #endregion
         }
 

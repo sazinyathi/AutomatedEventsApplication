@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Events.Intefarces\Events.Intefarces.csproj" />
+    <ProjectReference Include="..\Events.Repositories\Events.Repositories.csproj" />
+  </ItemGroup>
+
 </Project>
